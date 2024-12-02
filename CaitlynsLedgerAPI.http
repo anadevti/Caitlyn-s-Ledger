@@ -1,0 +1,6 @@
+@CaitlynsLedgerAPI_HostAddress = http://localhost:5062
+
+GET {{CaitlynsLedgerAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
