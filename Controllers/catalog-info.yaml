@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: C# Api
+  description: C# Api Service
+  annotations:
+    github.com/project-slug: anadevti/Caitlyn-s-Ledger
+  tags:
+    - C#
+    - api
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/guests
