@@ -1,12 +1,12 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: C# Api
+  name: csharp-api
   description: C# Api Service
   annotations:
     github.com/project-slug: anadevti/Caitlyn-s-Ledger
   tags:
-    - C#
+    - csharp
     - api
 spec:
   type: service
