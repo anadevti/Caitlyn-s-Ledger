@@ -1,15 +1,11 @@
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: API
 metadata:
-  name: csharp-api
-  description: C# Api Service
-  annotations:
-    github.com/project-slug: anadevti/Caitlyn-s-Ledger
-    backstage.io/techdocs-ref: dir:.
-  tags:
-    - csharp
-    - api
+  name: caitlyns-ledger
+  description: API de Caitlyn’s Ledger – simulando investigações no universo de Arcane.
 spec:
-  type: service
+  type: openapi
   lifecycle: production
-  owner: group:default/guests
+  owner: anadevti
+  definition:
+    $text: ./openapi.yaml
