@@ -5,6 +5,7 @@ metadata:
   description: C# Api Service
   annotations:
     github.com/project-slug: anadevti/Caitlyn-s-Ledger
+    backstage.io/techdocs-ref: dir:.
   tags:
     - csharp
     - api
