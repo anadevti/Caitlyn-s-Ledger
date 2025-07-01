@@ -8,7 +8,13 @@ RUN dotnet restore
 # Buildar a aplicação
 RUN dotnet publish -c Release -o /publish
 
-EXPOSE 5000
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+WORKDIR /app
+
+# Copiar os arquivos publicados para o container
+COPY --from=build /publish .
+
+EXPOSE 8000
 
 # Configurar o comando de inicialização
-ENTRYPOINT ["dotnet run", "CaitlynsLedgerAPI.dll"]
+ENTRYPOINT ["dotnet", "CaitlynsLedgerAPI.dll"]
