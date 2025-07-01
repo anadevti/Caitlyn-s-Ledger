@@ -1,0 +1,11 @@
+﻿services:
+  caitlyns-ledger-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./CaitlynsLedger.db:/app/CaitlynsLedger.db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
