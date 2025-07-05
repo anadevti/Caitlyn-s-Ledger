@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: caitlyns-ledger
+  description: API de Caitlyn’s Ledger – simulando investigações no universo de Arcane.
+spec:
+  type: openapi
+  lifecycle: production
+  owner: anadevti
+  definition:
+    $text: ./openapi.yaml

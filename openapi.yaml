@@ -1,0 +1,142 @@
+openapi: 3.0.1
+info:
+  title: Caitlyn's Ledger API
+  version: "1.0.0"
+  description: >
+    API que simula investigações no universo steampunk inspirado em Arcane.
+    Permite criar, listar, atualizar e excluir casos, além de gerenciar pistas e suspeitos.
+servers:
+  - url: http://localhost:7296
+    description: Servidor de desenvolvimento
+
+paths:
+  /api/cases:
+    get:
+      summary: Lista todos os casos
+      responses:
+        '200':
+          description: Lista de casos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Case'
+    post:
+      summary: Cria um novo caso
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Case'
+      responses:
+        '201':
+          description: Caso criado com sucesso
+
+  /api/cases/{id}:
+    get:
+      summary: Obtém os detalhes de um caso
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Detalhes do caso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Case'
+    put:
+      summary: Atualiza um caso existente
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Case'
+      responses:
+        '200':
+          description: Caso atualizado
+    delete:
+      summary: Remove um caso
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Caso removido
+
+components:
+  schemas:
+    Case:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Caso de Investigação"
+        description:
+          type: string
+          example: "Descrição detalhada do caso..."
+        status:
+          type: string
+          example: "Aberto"
+        clues:
+          type: array
+          items:
+            $ref: '#/components/schemas/Clue'
+        suspects:
+          type: array
+          items:
+            $ref: '#/components/schemas/Suspect'
+      required:
+        - name
+    Clue:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        description:
+          type: string
+          example: "Pista importante encontrada na cena do crime."
+        relevance:
+          type: string
+          example: "Alta"
+        caseId:
+          type: integer
+          example: 1
+      required:
+        - description
+    Suspect:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Suspeito A"
+        alibi:
+          type: string
+          example: "Álibi detalhado do suspeito."
+        caseId:
+          type: integer
+          example: 1
+      required:
+        - name
