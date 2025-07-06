@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  caitlynsledgerapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Google:ClientId=YOUR_GOOGLE_CLIENT_ID
+      - Google:ClientSecret=YOUR_GOOGLE_CLIENT_SECRET 
