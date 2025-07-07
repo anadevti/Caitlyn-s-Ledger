@@ -17,7 +17,10 @@
 8. [Licença](#licença)
 
 ---
+## Autenticação Oauth2
+Para autenticação, a API utiliza o padrão OAuth2. Você pode autenticar via `api/login/google` com as credenciais de usuário do seu e-mail.
 
+---
 ## Funcionalidades
 - **Casos de Investigação**:
   - Criar, listar, atualizar e excluir casos de investigação.
