@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using CaitlynsLedgerAPI.Models;
+using CaitlynsLedger.Domain.Entities;
 
 namespace CaitlynsLedgerAPI.Data
 {
@@ -19,6 +19,17 @@ namespace CaitlynsLedgerAPI.Data
                 // Define o SQLite como provedor de banco de dados
                 optionsBuilder.UseSqlite("Data Source=CaitlynsLedger.db");
             }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            
+            // Configurações específicas para a entidade Suspect
+            modelBuilder.Entity<Suspect>()
+                .HasKey(s => s.Id);
+                
+            // Outras configurações a serem adicionadas aqui
         }
     }
 }

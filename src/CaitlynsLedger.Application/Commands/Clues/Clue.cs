@@ -2,11 +2,12 @@
 
 namespace CaitlynsLedgerAPI.Models
 {
-    public class Suspect
+    public class Clue
     {
+        // caracteristics of the clue
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Alibi { get; set; }
+        public string Description { get; set; }
+        public string Relevance { get; set; }
         public int CaseId { get; set; }
 
         [JsonIgnore]
