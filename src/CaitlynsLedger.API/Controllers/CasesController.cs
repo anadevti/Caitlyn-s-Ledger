@@ -48,5 +48,25 @@ namespace CaitlynsLedgerAPI.Controllers
             return CreatedAtAction(nameof(GetCase), new { id = createdCase.Id }, createdCase);
         }
         
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<CaseDTO.CaseDto>> DeleteCase(int id)
+        {
+            var caseItem = await _caseService.GetByIdAsync(id);
+            if (caseItem == null)
+            {
+                throw new System.Exception();
+            }
+
+            await _caseService.DeleteAsync(id);
+            return NoContent();
+        }
+        
+        [HttpDelete("force-error")]
+        public async Task<ActionResult<string>> ForceError()
+        {
+            // This endpoint is for testing error handling
+            throw new System.Exception();
+            return "Error forced for testing purposes.";
+        }
     }
 }

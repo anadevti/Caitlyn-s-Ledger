@@ -5,6 +5,7 @@ using CaitlynsLedger.Domain.Interfaces;
 using CaitlynsLedger.Infrastructure.Repositories;
 using CaitlynsLedger.Application.Services;
 using CaitlynsLedger.Application.Mappings;
+using CaitlynsLedgerAPI.CaitlynsLedger.Domain.Handlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,11 @@ builder.Services.AddGoogleAuth(builder.Configuration);
 
 // Adiciona serviços e controladores
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddExceptionHandler<InternalServerError>();
+builder.Services.AddExceptionHandler<BadRequestExceptionHandler>();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
 
 // Registra repositórios
 builder.Services.AddScoped<ISuspectRepository, SuspectRepository>();
@@ -52,6 +58,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseExceptionHandler();
 app.UseHttpsRedirection();
 app.UseSession(); // Adiciona middleware de sessão antes da autenticação
 app.UseAuthentication();
