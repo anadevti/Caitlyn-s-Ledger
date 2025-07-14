@@ -2,24 +2,50 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Net;
 
-namespace CaitlynsLedgerAPI.CaitlynsLedger.Domain.Handlers;
-
-public class GlobalExceptionHandler : IExceptionHandler
+namespace CaitlynsLedgerAPI.CaitlynsLedger.Domain.Handlers
 {
-    public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
+    public class GlobalExceptionHandler : IExceptionHandler
     {
-        var problemDetails = new ProblemDetails
+        private readonly ILogger<GlobalExceptionHandler> _logger;
+
+        public GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
         {
-            Title = "An error occurred test - global handler",
-            Status = StatusCodes.Status400BadRequest,
-            Detail = exception.Message
-        };
+            _logger = logger;
+        }
 
-        httpContext.Response.StatusCode = problemDetails.Status.Value;
+        public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
+        {
+            _logger.LogError(exception, "An unexpected error occurred: {Message}", exception.Message);
 
-        await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken);
+            var (statusCode, title) = GetErrorDetails(exception);
 
-        return true;
+            var problemDetails = new ProblemDetails
+            {
+                Title = title,
+                Status = statusCode,
+                Detail = exception.Message,
+                Instance = httpContext.Request.Path
+            };
+
+            httpContext.Response.StatusCode = statusCode;
+            await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken);
+
+            return true;
+        }
+
+        private static (int StatusCode, string Title) GetErrorDetails(Exception exception)
+        {
+            return exception switch
+            {
+                ArgumentException => (StatusCodes.Status400BadRequest, "Bad Request"),
+               // ArgumentNullException => (StatusCodes.Status400BadRequest, "Bad Request"),
+                InvalidOperationException => (StatusCodes.Status400BadRequest, "Invalid Operation"),
+                UnauthorizedAccessException => (StatusCodes.Status401Unauthorized, "Unauthorized"),
+                NotImplementedException => (StatusCodes.Status501NotImplemented, "Not Implemented"),
+                _ => (StatusCodes.Status500InternalServerError, "Internal Server Error")
+            };
+        }
     }
 }
