@@ -5,6 +5,7 @@ using CaitlynsLedger.Domain.Interfaces;
 using CaitlynsLedger.Infrastructure.Repositories;
 using CaitlynsLedger.Application.Services;
 using CaitlynsLedger.Application.Mappings;
+using CaitlynsLedger.Application.Interfaces;
 using CaitlynsLedgerAPI.CaitlynsLedger.Domain.Handlers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -42,7 +43,7 @@ builder.Services.AddScoped<IClueRepository, ClueRepository>();
 
 // Registra serviços
 builder.Services.AddScoped<SuspectService>();
-builder.Services.AddScoped<CaseService>();
+builder.Services.AddScoped<ICaseService, CaseService>();
 builder.Services.AddScoped<ClueService>();
 
 builder.Services.AddControllers();

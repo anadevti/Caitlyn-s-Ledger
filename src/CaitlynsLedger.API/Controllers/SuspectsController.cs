@@ -21,8 +21,8 @@ namespace CaitlynsLedgerAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<SuspectDTO.SuspectDto>>> GetSuspects()
         {
-            // Implementação pendente
-            return NotFound();
+            var suspects = await _suspectService.GetAllAsync();
+            return Ok(suspects);
         }
 
         // GET: api/suspects/{id}
@@ -36,7 +36,7 @@ namespace CaitlynsLedgerAPI.Controllers
                 return NotFound();
             }
 
-            return suspect;
+            return Ok(suspect);
         }
     }
 }

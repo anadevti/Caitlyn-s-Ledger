@@ -3,11 +3,12 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CaitlynsLedger.Domain.Entities;
 using CaitlynsLedger.Domain.Interfaces;
+using CaitlynsLedger.Application.Interfaces;
 using CaitlynsLedgerAPI.CaitlynsLedger.Application;
 
 namespace CaitlynsLedger.Application.Services
 {
-    public class CaseService
+    public class CaseService : ICaseService
     {
         private readonly ICaseRepository _repository;
         private readonly IMapper _mapper;

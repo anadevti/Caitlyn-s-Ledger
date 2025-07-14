@@ -10,6 +10,7 @@ namespace CaitlynsLedger.Application.Mappings
         {
             // Mapeamentos para Suspect
             CreateMap<Suspect, SuspectDTO.SuspectDto>();
+                    //origem   // destino
             CreateMap<SuspectDTO.SuspectDto, Suspect>();
             
             // Mapeamentos para Case
@@ -21,4 +22,4 @@ namespace CaitlynsLedger.Application.Mappings
             CreateMap<ClueDTO.ClueDto, Clue>();
         }
     }
-}
+} 

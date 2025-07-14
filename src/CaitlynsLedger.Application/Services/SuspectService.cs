@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using CaitlynsLedgerAPI.CaitlynsLedger.Application;
 using CaitlynsLedger.Domain.Interfaces;
@@ -20,6 +21,12 @@ namespace CaitlynsLedger.Application.Services
         {
             var suspect = await _repository.GetByIdAsync(id);
             return _mapper.Map<SuspectDTO.SuspectDto>(suspect);
+        }
+
+        public async Task<IEnumerable<SuspectDTO.SuspectDto>> GetAllAsync()
+        {
+            var suspects = await _repository.GetAllAsync();
+            return _mapper.Map<IEnumerable<SuspectDTO.SuspectDto>>(suspects);
         }
     }
 }

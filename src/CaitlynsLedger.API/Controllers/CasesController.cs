@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CaitlynsLedger.Application.Services;
+using CaitlynsLedger.Application.Interfaces;
 using CaitlynsLedgerAPI.CaitlynsLedger.Application;
 
 namespace CaitlynsLedgerAPI.Controllers
@@ -10,9 +10,9 @@ namespace CaitlynsLedgerAPI.Controllers
     [Route("api/[controller]")]
     public class CasesController : ControllerBase
     {
-        private readonly CaseService _caseService;
+        private readonly ICaseService _caseService;
 
-        public CasesController(CaseService caseService)
+        public CasesController(ICaseService caseService)
         {
             _caseService = caseService;
         }
