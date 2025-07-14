@@ -7,13 +7,14 @@
 ## Índice
 1. [Funcionalidades](#funcionalidades)
 2. [Arquitetura](#arquitetura)
-3. [Tecnologias Utilizadas](#tecnologias-utilizadas)
-4. [Estrutura de Dados](#estrutura-de-dados)
-5. [Endpoints da API](#endpoints-da-api)
-6. [Configuração e Execução](#configuração-e-execução)
-7. [Autenticação](#autenticação)
-8. [Contribuindo](#contribuindo)
-9. [Licença](#licença)
+3. [Testes Unitários](#testes-unitários)
+4. [Tecnologias Utilizadas](#tecnologias-utilizadas)
+5. [Estrutura de Dados](#estrutura-de-dados)
+6. [Endpoints da API](#endpoints-da-api)
+7. [Configuração e Execução](#configuração-e-execução)
+8. [Autenticação](#autenticação)
+9. [Contribuindo](#contribuindo)
+10. [Licença](#licença)
 
 ---
 
@@ -25,7 +26,7 @@
 - **Histórico Completo**: Acompanhe a evolução do caso desde sua abertura até a resolução.
 
 ### Sistema de Pistas
-- **Catalogação de Evidências**: Adicione pistas detalhadas com título, descrição e localização.
+- **Catalogação de Evidências**: Adicione pistas detalhadas com t��tulo, descrição e localização.
 - **Datação**: Registre a data de descoberta de cada pista para análise cronológica.
 - **Relacionamento**: Associe pistas a casos específicos, construindo uma rede de evidências.
 
@@ -256,3 +257,80 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 ---
 
 **Desenvolvido com 💙 por [Ana]**
+
+---
+
+## Testes Unitários
+
+O projeto inclui uma suíte abrangente de testes unitários implementados com **xUnit**, **Moq** e **FluentAssertions**, garantindo a qualidade e confiabilidade do código.
+
+### Estrutura de Testes
+
+Os testes estão organizados no projeto `CaitlynLedger.Tests` seguindo a mesma estrutura da aplicação:
+
+```
+CaitlynLedger.Tests/
+├── Services/
+│   ├── CaseServiceTests.cs
+│   ├── ClueServiceTests.cs
+│   └── SuspectServiceTests.cs
+```
+
+### Cobertura de Testes
+
+#### CaseServiceTests
+- **GetByIdAsync_ExistingCase_ReturnsCase**: Verifica se um caso existente é retornado corretamente
+- **GetAllAsync_HasCases_ReturnsListOfCases**: Testa a recuperação de todos os casos cadastrados
+
+#### ClueServiceTests  
+- **GetByIdAsync_ExistingClue_ReturnsClue**: Valida o retorno de uma pista específica
+- **GetByIdAsync_NonExistingClue_ReturnsNull**: Verifica comportamento quando pista não existe
+- **GetAllAsync_HasClues_ReturnsListOfClues**: Testa a listagem de todas as pistas
+- **GetByCaseIdAsync_EmptyResult_ReturnsEmptyList**: Verifica retorno vazio quando caso não tem pistas
+- **AddAsync_ValidClue_CallsRepositoryAdd**: Valida a adição de novas pistas
+
+#### SuspectServiceTests
+- **GetByIdAsync_ExistingSuspect_ReturnsSuspect**: Verifica recuperação de suspeito existente
+- **GetByIdAsync_NonExistingSuspect_ReturnsNull**: Testa comportamento com suspeito inexistente
+
+### Tecnologias de Teste
+
+- **xUnit**: Framework principal para execução dos testes
+- **Moq**: Library para criação de mocks e simulação de dependências
+- **FluentAssertions**: Sintaxe fluida e expressiva para assertions
+- **AutoMapper**: Testado através de mocks para validar mapeamentos
+
+### Padrões de Teste
+
+Os testes seguem o padrão **AAA (Arrange, Act, Assert)**:
+
+- **Arrange**: Configuração dos mocks e dados de teste
+- **Act**: Execução do método sendo testado
+- **Assert**: Verificação dos resultados usando FluentAssertions
+
+### Executando os Testes
+
+Para executar todos os testes unitários:
+
+```bash
+dotnet test
+```
+
+Para executar testes com relatório de cobertura:
+
+```bash
+dotnet test --collect:"XPlat Code Coverage"
+```
+
+Para executar testes de uma classe específica:
+
+```bash
+dotnet test --filter "ClassName=CaseServiceTests"
+```
+
+### Benefícios dos Testes
+
+- **Confiabilidade**: Garantem que as funcionalidades funcionem conforme esperado
+- **Manutenibilidade**: Detectam regressões durante refatorações
+- **Documentação**: Servem como documentação viva do comportamento esperado
+- **Qualidade**: Promovem melhor design através de código testável
