@@ -2,9 +2,6 @@ using CaitlynsLedger.Domain.Entities;
 using CaitlynsLedger.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using CaitlynsLedgerAPI.Data;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CaitlynsLedger.Infrastructure.Repositories
 {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace CaitlynsLedgerAPI.CaitlynsLedger.Application
+﻿namespace CaitlynsLedgerAPI.CaitlynsLedger.Application
 {
     public class CaseDTO
     {
@@ -13,6 +10,8 @@ namespace CaitlynsLedgerAPI.CaitlynsLedger.Application
             public string Status { get; set; } // Aberto, Resolvido, Não Resolvido
             public DateTime? CreatedAt { get; set; }
             public DateTime? ClosedAt { get; set; }
+            public bool IsArchived { get; set; }
+            public bool IsClosed { get; set; }
             
             public List<SuspectDTO.SuspectDto> Suspects { get; set; } = new List<SuspectDTO.SuspectDto>();
             public List<ClueDTO.ClueDto> Clues { get; set; } = new List<ClueDTO.ClueDto>();

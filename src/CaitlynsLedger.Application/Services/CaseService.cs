@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using CaitlynsLedger.Domain.Entities;
 using CaitlynsLedger.Domain.Interfaces;
 using CaitlynsLedger.Application.Interfaces;

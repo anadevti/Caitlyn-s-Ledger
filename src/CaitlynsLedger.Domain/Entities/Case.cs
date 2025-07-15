@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace CaitlynsLedger.Domain.Entities
+﻿namespace CaitlynsLedger.Domain.Entities
 {
     public class Case
     {
@@ -11,6 +8,8 @@ namespace CaitlynsLedger.Domain.Entities
         public string Status { get; set; } // Aberto, Resolvido, Não Resolvido
         public DateTime CreatedAt { get; set; }
         public DateTime? ClosedAt { get; set; }
+        public bool IsArchived { get; set; }
+        public bool IsClosed { get; set; }
         
         public ICollection<Suspect> Suspects { get; set; } = new List<Suspect>();
         public ICollection<Clue> Clues { get; set; } = new List<Clue>();

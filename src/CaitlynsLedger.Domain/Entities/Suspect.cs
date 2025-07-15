@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CaitlynsLedger.Domain.Entities
+﻿namespace CaitlynsLedger.Domain.Entities
 {
     public class Suspect
     {

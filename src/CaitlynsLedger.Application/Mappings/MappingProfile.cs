@@ -2,7 +2,7 @@
 using CaitlynsLedger.Domain.Entities;
 using CaitlynsLedgerAPI.CaitlynsLedger.Application;
 
-namespace CaitlynsLedger.Application.Mappings
+namespace CaitlynsLedgerAPI.CaitlynsLedger.Application.Mappings
 {
     public class MappingProfile : Profile
     {
@@ -10,7 +10,6 @@ namespace CaitlynsLedger.Application.Mappings
         {
             // Mapeamentos para Suspect
             CreateMap<Suspect, SuspectDTO.SuspectDto>();
-                    //origem   // destino
             CreateMap<SuspectDTO.SuspectDto, Suspect>();
             
             // Mapeamentos para Case
@@ -19,7 +18,8 @@ namespace CaitlynsLedger.Application.Mappings
             
             // Mapeamentos para Clue
             CreateMap<Clue, ClueDTO.ClueDto>();
-            CreateMap<ClueDTO.ClueDto, Clue>();
+            CreateMap<ClueDTO.ClueDto, Clue>()
+                .ForMember(dest => dest.Case, opt => opt.Ignore()); // Ignora a navegação circular
         }
     }
-} 
+}

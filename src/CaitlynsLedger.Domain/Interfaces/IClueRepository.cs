@@ -1,6 +1,4 @@
 ﻿using CaitlynsLedger.Domain.Entities;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CaitlynsLedger.Domain.Interfaces
 {

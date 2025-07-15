@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using CaitlynsLedger.Domain.Interfaces;
 using CaitlynsLedger.Infrastructure.Repositories;
 using CaitlynsLedger.Application.Services;
-using CaitlynsLedger.Application.Mappings;
+using CaitlynsLedgerAPI.CaitlynsLedger.Application.Mappings;
 using CaitlynsLedger.Application.Interfaces;
 using CaitlynsLedgerAPI.CaitlynsLedger.Domain.Handlers;
 

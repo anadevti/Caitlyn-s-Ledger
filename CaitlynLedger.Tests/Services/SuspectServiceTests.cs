@@ -5,7 +5,6 @@ using CaitlynsLedger.Domain.Interfaces;
 using CaitlynsLedgerAPI.CaitlynsLedger.Application;
 using FluentAssertions;
 using Moq;
-using Xunit;
 
 namespace CaitlynLedger.Tests.Services;
 
