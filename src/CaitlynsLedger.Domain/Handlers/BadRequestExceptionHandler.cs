@@ -1,7 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Diagnostics;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 
 namespace CaitlynsLedgerAPI.CaitlynsLedger.Domain.Handlers;
 

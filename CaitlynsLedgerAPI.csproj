@@ -38,9 +38,6 @@
 
   <ItemGroup>
     <Folder Include="src\CaitlynsLedger.API\" />
-    <Folder Include="src\CaitlynsLedger.Application\Queries\Cases\" />
-    <Folder Include="src\CaitlynsLedger.Application\Queries\Clues\" />
-    <Folder Include="src\CaitlynsLedger.Application\Queries\Suspects\" />
     <Folder Include="src\CaitlynsLedger.Infrastructure\Configurations\" />
     <Folder Include="src\CaitlynsLedger.Infrastructure\Migrations\Services\" />
   </ItemGroup>

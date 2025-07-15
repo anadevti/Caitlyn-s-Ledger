@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CaitlynsLedgerAPI.CaitlynsLedger.Application;
+﻿namespace CaitlynsLedgerAPI.CaitlynsLedger.Application;
 
 public class SuspectDTO
 {
